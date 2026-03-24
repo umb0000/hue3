@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #000;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.layout {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+/* 로고 */
+header {
+  margin-bottom: 50px;
+}
+
+.logo {
+  font-size: 80px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+  display: block;
+}
+
+/* 글 목록 */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 10;
+}
+
+.post-card {
+  display: inline-block;
+  width: fit-content;
+}
+
+.post-title {
+  background: #000;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  transition: background 0.2s;
+}
+
+.post-card:hover .post-title {
+  background: #333;
+}
+
+/* 홈 3D 오브젝트 - 우측 하단 고정 */
+.home {
+  position: relative;
+  min-height: 60vh;
+}
+
+.home-3d {
+  position: fixed;
+  right: 20px;
+  bottom: -60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 글 상세 페이지 */
+.post-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.post-hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.post-page-title {
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.post-content {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.back-link {
+  font-size: 14px;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #000;
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .layout {
+    padding: 40px 20px;
+  }
+
+  .logo {
+    font-size: 52px;
+  }
+
+  .post-page-title {
+    font-size: 28px;
+  }
+}
