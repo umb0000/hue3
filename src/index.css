@@ -20,6 +20,7 @@ a {
   max-width: 720px;
   margin: 0 auto;
   padding: 60px 30px;
+  overflow-x: hidden;
 }
 
 /* 로고 */
@@ -28,11 +29,12 @@ header {
 }
 
 .logo {
-  font-size: 80px;
+  font-size: 160px;
   font-weight: 900;
-  letter-spacing: -2px;
+  letter-spacing: -4px;
   line-height: 1;
   display: block;
+  -webkit-text-stroke: 3px #000;
 }
 
 /* 글 목록 */
@@ -63,16 +65,13 @@ header {
   background: #333;
 }
 
-/* 홈 3D 오브젝트 - 우측 하단 고정 */
-.home {
-  position: relative;
-  min-height: 60vh;
-}
-
-.home-3d {
+/* 3D 오브젝트 - 화면 전체 */
+.global-3d {
   position: fixed;
-  right: 20px;
-  bottom: -60px;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: 1;
   pointer-events: none;
 }
@@ -82,6 +81,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
+  z-index: 10;
 }
 
 .post-hero {
@@ -107,6 +108,8 @@ header {
   font-size: 14px;
   color: #666;
   transition: color 0.2s;
+  position: relative;
+  z-index: 10;
 }
 
 .back-link:hover {
@@ -120,7 +123,7 @@ header {
   }
 
   .logo {
-    font-size: 52px;
+    font-size: 100px;
   }
 
   .post-page-title {

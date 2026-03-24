@@ -1,10 +1,26 @@
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import SpinningObject from '../components/SpinningObject';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import { samplePosts } from '../sampleData';
 
 export default function Post() {
   const { id } = useParams();
-  const post = samplePosts.find((p) => p.id === id);
+  const [post, setPost] = useState(samplePosts.find((p) => p.id === id) || null);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const snap = await getDoc(doc(db, 'posts', id));
+        if (snap.exists()) {
+          setPost({ id: snap.id, ...snap.data() });
+        }
+      } catch (e) {
+        console.log('Firestore not available, using sample data');
+      }
+    };
+    fetchPost();
+  }, [id]);
 
   if (!post) {
     return (
@@ -17,9 +33,6 @@ export default function Post() {
 
   return (
     <div className="post-page">
-      <div className="post-hero">
-        <SpinningObject size={300} />
-      </div>
       <h1 className="post-page-title">{post.title}</h1>
       <div className="post-content">
         <p>{post.content}</p>
